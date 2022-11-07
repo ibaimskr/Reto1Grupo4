@@ -17,6 +17,7 @@ public class ErrorMessageDto {
 		this.rejectedValue = rejectedValue;
 	}
 
+	
 	public String getObjectName() {
 		return objectName;
 	}
