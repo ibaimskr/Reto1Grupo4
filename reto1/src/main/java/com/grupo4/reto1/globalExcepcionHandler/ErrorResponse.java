@@ -11,10 +11,12 @@ public class ErrorResponse {
 	
 	public ErrorResponse(String name, int value, List<ErrorMessageDto> validationErrorDetails) {
 		super();
+		
 		this.name = name;
 		this.value = value;
 		this.validationErrorDetails = validationErrorDetails;
 	}
+
 
 	public String getName() {
 		return name;
