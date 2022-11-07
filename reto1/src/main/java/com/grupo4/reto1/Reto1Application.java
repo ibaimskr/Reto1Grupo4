@@ -9,5 +9,4 @@ public class Reto1Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Reto1Application.class, args);
 	}
-int a;
 }
