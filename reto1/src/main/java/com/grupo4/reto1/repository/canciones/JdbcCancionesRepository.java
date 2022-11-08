@@ -1,4 +1,4 @@
-package com.grupo4.reto1.repository.usuarios;
+package com.grupo4.reto1.repository.canciones;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.example.demo.model.employee.Employee;
-import com.grupo4.reto1.model.usuarios.Usuarios;
+
+import com.grupo4.reto1.model.canciones.Canciones;
 
 public class JdbcCancionesRepository implements CancionesRepository{
 	@Autowired
