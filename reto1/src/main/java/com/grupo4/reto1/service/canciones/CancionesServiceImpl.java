@@ -14,23 +14,23 @@ import com.example.demo.repository.departament.DepartamentRepository;
 import com.example.demo.service.employee.EmployeeService;
 
 @Service
-public class DepartamentServiceImpl implements DepartamentService{
+public class CancionesServiceImpl implements CancionesService{
 
 	
 	@Autowired
-	EmployeeService employeeService;
+	CancionesService cancionesService;
 	@Autowired
-	DepartamentRepository departamentRepository;
+	CancionesRepository cancionesRepository;
 	
 	@Override
-	public List<DepartamentServiceResponse> getAllDepartaments() {
-		List<DepartamentServiceResponse> response = new ArrayList<DepartamentServiceResponse>();
-		List<Departament> departamentList = departamentRepository.findAll();
-		for (Departament departament : departamentList){
-			response.add(new DepartamentServiceResponse(
-			departament.getId(),
-			departament.getName(),
-			departament.getCity(),
+	public List<CancionesServiceResponse> getAllCanciones() {
+		List<CancionesServiceResponse> response = new ArrayList<CancionesServiceResponse>();
+		List<Canciones> cancionesList = cancionesRepository.findAll();
+		for (Canciones cancion : cancionList){
+			response.add(new CancionesServiceResponse(
+			cancion.get(),
+			cancion.getName(),
+			cancion.getCity(),
 			null
 			));
 		}
@@ -38,44 +38,17 @@ public class DepartamentServiceImpl implements DepartamentService{
 	}
 
 	@Override
-	public DepartamentServiceResponse getDepartamentById(long id) {
-		Departament departament = departamentRepository.findById(id);
-		return new DepartamentServiceResponse(
-				departament.getId(),
-				departament.getName(),
-				departament.getCity(),
+	public CancionesServiceResponse getCancionById(long id) {
+		Canciones cancion= cancionesRepository.findById(id);
+		return new CancionesServiceResponse(
+				cancion.getId(),
+				cancion.getName(),
+				cancion.getCity(),
 				null
 				);
 	}
 
-	@Override
-	public int createDepartament(Departament departament) {
-		return departamentRepository.create(departament);
-	}
-
-	@Override
-	public int updateDepartament(Departament departament) {
-		return departamentRepository.update(departament);
-	}
-
-	@Override
-	public int deleteDepartamentById(long id) {
-		return departamentRepository.deleteById(id);
-	}
-
-	@Override
-	public List<EmployeeServiceResponse> getDepartamentEmployees(long departamentId) {
-		return employeeService.getEmployeesByDepartamentId(departamentId);
-	}
-
-	@Override
-	public DepartamentServiceResponse getDepartamentWithEmployees(long id) {
-		DepartamentServiceResponse response = getDepartamentById(id);
-		List<EmployeeServiceResponse> employee = employeeService.getEmployeesByDepartamentId(id);
-		response.setEmployeeList(employee);
-		
-		return response;
-	}
+	
 }
 	
 
