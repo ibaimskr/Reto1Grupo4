@@ -17,6 +17,7 @@ public class UsuariosGetResponse {
 		this.password = password;
 	}
 	
+	
 
 	public Long getId() {
 		return id;
