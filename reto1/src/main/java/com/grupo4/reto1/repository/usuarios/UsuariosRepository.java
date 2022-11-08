@@ -10,7 +10,7 @@ public interface UsuariosRepository {
 	Usuarios getUsuarios(String email);
 	Usuarios findById(String email);
 	int create(Usuarios usuario);
-	int update(Usuarios usuario);
+	//int update(Usuarios usuario);
 	int deleteById(String email);
 
 	

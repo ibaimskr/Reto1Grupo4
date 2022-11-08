@@ -7,7 +7,7 @@ import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.example.demo.model.employee.Employee;
+
 import com.grupo4.reto1.model.usuarios.Usuarios;
 
 public class JdbcUsuariosRepository implements UsuariosRepository{
@@ -45,34 +45,40 @@ public class JdbcUsuariosRepository implements UsuariosRepository{
 
 	@Override
 	public Usuarios findById(String email) {
-		/return jdbcTemplate.update(
-				"INSERT INTO usuarios (nombre, apellidos, email, password, departamentId) VALUES(?, ?, ?, ?, ?)",
-				new Object[] { 
-						employee.getName(), 
-						employee.getPosition(),
-						employee.getSalary(), 
-						employee.getBossId(), 
-						employee.getDepartamentId()
-					}
-				);
+		return jdbcTemplate.queryForObject("SELECT * FROM usuarios where email = ?", BeanPropertyRowMapper.newInstance(Usuarios.class), email);
 	}
 
 	@Override
 	public int create(Usuarios usuario) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update(
+				"INSERT INTO usuarios (nombre, apellidos, email, password) VALUES(?, ?, ?, ?)",
+				new Object[] { 
+						usuario.getNombre(), 
+						usuario.getApellidos(),
+						usuario.getEmail(), 
+						usuario.getPassword(), 
+						
+					}
+				);
 	}
-
+/*
 	@Override
 	public int update(Usuarios usuario) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update(
+				"UPDATE  usuarios SET nombre = ?, apellidos = ?, email = ?, password = ?) WHERE email =?",
+				new Object[] { 
+						usuario.getNombre(), 
+						usuario.getApellidos(),
+						usuario.getEmail(), 
+						usuario.getPassword(), 
+						
+					}
+				);
 	}
-
+*/
 	@Override
 	public int deleteById(String email) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update("DELETE FROM usuarios WHERE email=?", email);
 	}
 
 }
